@@ -43,6 +43,8 @@ cityreader(cities)
 for c in cities:
     print(c)
 
+### NOTE: I completed the stretch goal in a separate branch, named 'stretch'! :D
+
 # STRETCH GOAL!
 #
 # Allow the user to input two points, each specified by latitude and longitude.
