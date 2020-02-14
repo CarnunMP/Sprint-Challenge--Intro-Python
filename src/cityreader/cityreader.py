@@ -73,8 +73,8 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
-user_point_1 = input("Please enter a point in the form [latititde] [longitude], where both are floats.").split(" ")
-user_point_2 = input("Please enter a second point in the form [latititde] [longitude], where both are floats.").split(" ")
+user_point_1 = input("Please enter a point in the form [latititde] [longitude], where both are floats: ").split(" ")
+user_point_2 = input("Please enter a second point in the form [latititde] [longitude], where both are floats: ").split(" ")
 
 lowest_lat = user_point_1 if user_point_1[0] <= user_point_2[0] else user_point_2
 lowest_lon = user_point_1 if user_point_1[1] <= user_point_2[1] else user_point_2
