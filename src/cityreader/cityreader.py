@@ -75,13 +75,42 @@ for c in cities:
 # Salt Lake City: (40.7774,-111.9301)
 
 # TODO Get latitude and longitude values from the user
+user_point_1 = input("Please enter a point in the form [latititde] [longitude], where both are floats: ").split(" ")
+user_point_2 = input("Please enter a second point in the form [latititde] [longitude], where both are floats: ").split(" ")
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-  # within will hold the cities that fall within the specified region
-  within = []
+# Ensure both are floats:
+user_point_1 = list(map(lambda string: float(string), user_point_1))
+user_point_2 = list(map(lambda string: float(string), user_point_2))
 
-  # TODO Ensure that the lat and lon valuse are all floats
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
+def cityreader_stretch(lat1 = user_point_1[0], lon1 = user_point_1[1], lat2 = user_point_2[0], lon2 = user_point_2[1], cities=cities):
+    point1 = [lat1, lon1]
+    point2 = [lat2, lon2]
 
-  return within
+    lowest_lat = point1 if point1[0] <= point2[0] else point2
+    lowest_lon = point1 if point1[1] <= point2[1] else point2
+
+    bottom_left = []
+    top_right = []
+    if lowest_lat == point1 and lowest_lon == point1:
+        bottom_left = point1
+        top_right = point2
+    elif lowest_lat == point2 and lowest_lon == point2:
+        bottom_left = point2
+        top_right = point1
+    elif lowest_lat == point1 and lowest_lon == point2:
+        bottom_left = [point1[0], point2[1]]
+        top_right = [point2[0], point1[1]]
+    elif lowest_lat == point2 and lowest_lon == point1:
+        bottom_left = [point2[0], point1[1]]
+        top_right = [point1[0], point2[1]]
+    
+    # within will hold the cities that fall within the specified region
+    within = [city for city in cities if city.lat >= bottom_left[0] and city.lat <= top_right[0] and city.lon >= bottom_left[1] and city.lon <= top_right[1]]
+
+    # TODO Ensure that the lat and lon valuse are all floats
+        # Check!
+    # Go through each city and check to see if it falls within
+    # the specified coordinates.
+        # Check!
+
+    return within
