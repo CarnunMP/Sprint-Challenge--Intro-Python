@@ -76,6 +76,7 @@ for c in cities:
 user_point_1 = input("Please enter a point in the form [latititde] [longitude], where both are floats: ").split(" ")
 user_point_2 = input("Please enter a second point in the form [latititde] [longitude], where both are floats: ").split(" ")
 
+# Ensure both are floats:
 user_point_1 = list(map(lambda string: float(string), user_point_1))
 user_point_2 = list(map(lambda string: float(string), user_point_2))
 
@@ -105,7 +106,9 @@ def cityreader_stretch(lat1 = user_point_1[0], lon1 = user_point_1[1], lat2 = us
     within = [city for city in cities if city.lat >= bottom_left[0] and city.lat <= top_right[0] and city.lon >= bottom_left[1] and city.lon <= top_right[1]]
 
     # TODO Ensure that the lat and lon valuse are all floats
-    # Go through each city and check to see if it falls within 
+        # Check!
+    # Go through each city and check to see if it falls within
     # the specified coordinates.
+        # Check!
 
     return within
